@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Assignments | Akshay Jadhav</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8fbff, #e3f2fd, #dbeafe);
+            overflow-x: hidden;
+            color: #0f172a;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: rgba(59, 130, 246, 0.18);
+            border-radius: 50%;
+            top: -150px;
+            left: -120px;
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: rgba(14, 165, 233, 0.18);
+            border-radius: 50%;
+            bottom: -140px;
+            right: -120px;
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        /* HEADER */
+
+        header {
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 55px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #2563eb, #0284c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: #334155;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        /* SECTION TITLE */
+
+        .section-title {
+            font-size: 34px;
+            margin: 50px 0 35px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            color: #0f172a;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 70%;
+            height: 4px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #2563eb, #38bdf8);
+        }
+
+        /* GRID */
+
+        .assignments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* CARD */
+
+        .card {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .card-header {
+            padding: 30px 25px 20px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .assignment-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .description {
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* BUTTON */
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            background: linear-gradient(to right, #2563eb, #0ea5e9);
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 80px;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        footer h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+
+        footer p {
+            color: #334155;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .github-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(to right, #2563eb, #0284c7);
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        @media(max-width:768px) {
+
+            header h1 {
+                font-size: 38px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .assignments-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>Web Development Assignments</h1>
+
+        <p>
+            Semester 4 | SY A | Web Technology Practical Dashboard
+        </p>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <!-- HTML SECTION -->
+
+        <h2 class="section-title">HTML & CSS Assignments</h2>
+
+        <div class="assignments-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">01</div>
+                    <div class="card-title">First Webpage</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Introduction to HTML basics with webpage structure and semantic elements.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">Basics</span>
+                    </div>
+
+                    <a href="assignment1.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">02</div>
+                    <div class="card-title">Static Webpage</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Building static web pages using HTML and CSS layout techniques.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">Layout</span>
+                    </div>
+
+                    <a href="assignmnet2.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">03</div>
+                    <div class="card-title">Text Formatting</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Working with formatting tags including bold, italic, underline and more.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">Text Tags</span>
+                    </div>
+
+                    <a href="assignment3.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 4 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">04</div>
+                    <div class="card-title">Lists & Tags</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Understanding ordered lists, unordered lists and semantic HTML tags.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Lists</span>
+                        <span class="tag">HTML</span>
+                    </div>
+
+                    <a href="assignmnet4.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 5 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">05</div>
+                    <div class="card-title">Images</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Understanding image integration, responsive images and optimization.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Images</span>
+                        <span class="tag">HTML</span>
+                    </div>
+
+                    <a href="assignment5.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 6 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">06</div>
+                    <div class="card-title">iFrames</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Embedding external web content like maps and videos using iFrames.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">iFrames</span>
+                        <span class="tag">HTML</span>
+                    </div>
+
+                    <a href="assignment6.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 7 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">07</div>
+                    <div class="card-title">Hyperlinks</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Creating hyperlinks using text and images with navigation concepts.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Links</span>
+                        <span class="tag">Navigation</span>
+                    </div>
+
+                    <a href="assignment7.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 8 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">08</div>
+                    <div class="card-title">Tables</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Designing tables using rows, columns and advanced table structures.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Tables</span>
+                        <span class="tag">HTML</span>
+                    </div>
+
+                    <a href="assginment8.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 9 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">09</div>
+                    <div class="card-title">Forms</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Building interactive forms using input fields and validation.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Forms</span>
+                        <span class="tag">Input</span>
+                    </div>
+
+                    <a href="assignment9.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 10 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">10</div>
+                    <div class="card-title">Resume Website</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        Creating a professional resume website using HTML and CSS.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Portfolio</span>
+                        <span class="tag">CSS</span>
+                    </div>
+
+                    <a href="Assignment 10/assignment10.html" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- XML SECTION -->
+
+        <h2 class="section-title">XML & Advanced Assignments</h2>
+
+        <div class="assignments-grid">
+
+            <!-- CARD 11 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">11</div>
+                    <div class="card-title">XML CSS</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        XML practicals using CSS styling for structured data presentation.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">XML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+
+                    <a href="XML_CSS/" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 12 -->
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="assignment-number">12</div>
+                    <div class="card-title">XML using XSLT</div>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="description">
+                        XML transformation using XSLT stylesheets for HTML output generation.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">XML</span>
+                        <span class="tag">XSLT</span>
+                    </div>
+
+                    <a href="XML Transformation uisng XSLT and conditional statement/" class="btn">
+                        View Assignment
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>Akshay Surgond</h3>
+
+        <p>Roll No. 105</p>
+
+        <p>SY A - Semester 4</p>
+
+        <p>D.Y. Patil College of Engineering & Technology</p>
+
+        <a href="https://github.com/akshayjr897/S5_105_webdevlopement-"
+            target="_blank"
+            class="github-btn">
+
+            View GitHub Repository
+
+        </a>
+
+    </footer>
+
+</body>
+
+</html>
